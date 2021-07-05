@@ -1,0 +1,11 @@
+# github.com/kelseyhightower/envconfig v1.4.0
+## explicit
+github.com/kelseyhightower/envconfig
+# github.com/penkovski/graceful v0.0.0-20210429094548-d4e99f50affc
+## explicit
+github.com/penkovski/graceful
+# github.com/rs/zerolog v1.23.0
+## explicit
+github.com/rs/zerolog
+github.com/rs/zerolog/internal/cbor
+github.com/rs/zerolog/internal/json
