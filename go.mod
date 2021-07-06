@@ -1,4 +1,4 @@
-module github.com/penkovski/oauth2mini
+module github.com/penkovski/oauth2min
 
 go 1.16
 

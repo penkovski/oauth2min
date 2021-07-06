@@ -1,2 +1,3 @@
-# oauth2mini
-Simple OAuth2 server implementation. Or at least that is the goal.
+# oauth2min
+Minimal OAuth2 server implementation. Simplicity and robustness
+are very much desired.
