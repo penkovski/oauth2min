@@ -14,6 +14,8 @@ import (
 	"github.com/penkovski/oauth2min/internal/server"
 )
 
+var Version = "0.0.0+development"
+
 func main() {
 	// initialize structured logger
 	logger := zerolog.New(os.Stderr)
@@ -24,19 +26,22 @@ func main() {
 		logger.Fatal().Err(err).Send()
 	}
 
+	// create oauth service
 	oauth := oauth2.New()
-	handler := server.New(oauth)
+
+	// create http handler
+	server := server.New(oauth, logger)
 
 	addr := cfg.HTTP.Host + ":" + cfg.HTTP.Port
 	srv := &http.Server{
 		Addr:         addr,
-		Handler:      handler,
+		Handler:      server,
 		ReadTimeout:  cfg.HTTP.ReadTimeout,
 		WriteTimeout: cfg.HTTP.WriteTimeout,
 		IdleTimeout:  cfg.HTTP.IdleTimeout,
 	}
 
-	logger.Info().Str("addr", addr).Msg("starting oauth2 server")
+	logger.Info().Str("addr", addr).Str("version", Version).Msg("starting oauth2 server")
 
 	if err := graceful.Shutdown(srv, 10*time.Second); err != nil {
 		logger.Error().Err(err)
